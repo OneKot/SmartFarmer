@@ -24,9 +24,9 @@ import com.google.firebase.auth.FirebaseAuth;
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth auth;
 
-    TextView textView1,textView2;
-    EditText editText1,editText2,editText3;
-    Button button1,button2;
+    private TextView textView1,textView2;
+    private EditText editText1,editText2,editText3;
+    private Button button1,button2;
 
     @SuppressLint("MissingInflatedId")
     @Override
