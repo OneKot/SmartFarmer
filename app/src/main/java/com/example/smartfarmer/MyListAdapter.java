@@ -16,10 +16,6 @@ import androidx.annotation.Nullable;
 
 import java.util.List;
 
-/**
- * Created by Belal on 9/14/2017.
- */
-
 //we need to extend the ArrayAdapter class as we are building an adapter
 public class MyListAdapter extends ArrayAdapter<Product> {
 

@@ -4,10 +4,12 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +21,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main extends AppCompatActivity {
+    public String[] namesP = {"Сгущенка","Молоко","Кефир","Сыр","Йогурт клубничный","Йогурт банановый"};
+    public String[] pricesP = {"189 ₽","199 ₽","129 ₽","389 ₽","79 ₽","79 ₽"};
+    public int[] imagesP = {R.drawable.image1,R.drawable.image2,R.drawable.image3,R.drawable.image4,R.drawable.image5,R.drawable.image6};
     private SearchView searchView;
     private ListView listView;
     private ImageView imageView1,imageView2,imageView3,imageView4;
@@ -45,13 +50,13 @@ public class Main extends AppCompatActivity {
         textView2 = findViewById(R.id.textView2);
         productList = new ArrayList<>();
 
-        //adding some values to our list
-        productList.add(new Product(R.drawable.image1, "Сгущенка", "189 ₽","Поставщик"));
-        productList.add(new Product(R.drawable.image2, "Молоко", "199 ₽","Поставщик"));
-        productList.add(new Product(R.drawable.image3, "Кефир", "129 ₽","Поставщик"));
-        productList.add(new Product(R.drawable.image4, "Сыр", "389 ₽","Поставщик"));
-        productList.add(new Product(R.drawable.image5, "Йогурт клубничный", "79 ₽","Поставщик"));
-        productList.add(new Product(R.drawable.image6, "Йогурт банановый", "79 ₽","Поставщик"));
+
+        productList.add(new Product(imagesP[0], namesP[0], pricesP[0],"Поставщик"));
+        productList.add(new Product(imagesP[1], namesP[1], pricesP[1],"Поставщик"));
+        productList.add(new Product(imagesP[2], namesP[2], pricesP[2],"Поставщик"));
+        productList.add(new Product(imagesP[3], namesP[3], pricesP[3],"Поставщик"));
+        productList.add(new Product(imagesP[4], namesP[4], pricesP[4],"Поставщик"));
+        productList.add(new Product(imagesP[5], namesP[5], pricesP[5],"Поставщик"));
 
         //creating the adapter
         MyListAdapter adapter = new MyListAdapter(this, R.layout.list_item, productList);
@@ -90,6 +95,19 @@ public class Main extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Main.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String selectedItem = parent.getItemAtPosition(position).toString();
+                int selectedPosition = position;
+
+                Intent intent = new Intent(Main.this, ProductProfile.class);
+
+                intent.putExtra("selected_item",selectedItem);
+                intent.putExtra("selectedPosition",selectedPosition);
                 startActivity(intent);
             }
         });

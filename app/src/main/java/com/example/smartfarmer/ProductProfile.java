@@ -1,6 +1,7 @@
 package com.example.smartfarmer;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,5 +21,9 @@ public class ProductProfile extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        String selectedItem = getIntent().getStringExtra("selected_item");
+        int selectedPosition = getIntent().getIntExtra("selected_position", 0);
+
     }
 }
