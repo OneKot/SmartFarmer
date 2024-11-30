@@ -9,7 +9,7 @@
     android:background="@color/mainBackground">
 
     <View
-        android:id="@+id/view2"
+        android:id="@+id/view1"
         android:layout_width="411dp"
         android:layout_height="215dp"
         android:background="@color/white"
@@ -17,10 +17,151 @@
         tools:layout_editor_absoluteY="0dp" />
 
     <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="204dp"
-        android:layout_height="189dp"
+        android:id="@+id/imageView1"
+        android:layout_width="221dp"
+        android:layout_height="195dp"
         app:srcCompat="@drawable/image3"
-        tools:layout_editor_absoluteX="103dp"
+        tools:layout_editor_absoluteX="95dp"
         tools:layout_editor_absoluteY="16dp" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="129 ₽"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        tools:layout_editor_absoluteX="40dp"
+        tools:layout_editor_absoluteY="225dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Кефир"
+        android:textColor="@color/white"
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="244dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Поставщик"
+        android:textColor="@color/white"
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="263dp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Характеристики"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="294dp" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Вид продукта"
+        android:textColor="@color/white"
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="326dp" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Масса нетто"
+        android:textColor="@color/white"
+        tools:layout_editor_absoluteX="40dp"
+        tools:layout_editor_absoluteY="345dp" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ккал"
+        android:textColor="@color/white"
+        tools:layout_editor_absoluteX="40dp"
+        tools:layout_editor_absoluteY="364dp" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Жирность"
+        android:textColor="@color/white"
+        tools:layout_editor_absoluteX="40dp"
+        tools:layout_editor_absoluteY="383dp" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Описание"
+        android:textSize="24sp"
+        android:textColor="@color/white"
+        tools:layout_editor_absoluteX="40dp"
+        tools:layout_editor_absoluteY="418dp" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="322dp"
+        android:layout_height="115dp"
+        android:text="Текст описания"
+        android:textColor="@color/white"
+        tools:layout_editor_absoluteX="40dp"
+        tools:layout_editor_absoluteY="453dp" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Манап Гусейнов"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteX="39dp"
+        tools:layout_editor_absoluteY="579dp" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Рейтинг: 5.0"
+        android:textColor="@color/white"
+        tools:layout_editor_absoluteX="40dp"
+        tools:layout_editor_absoluteY="626dp" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/profileuser"
+        tools:layout_editor_absoluteX="260dp"
+        tools:layout_editor_absoluteY="575dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Купить с доставкой"
+        android:textColor="@color/white"
+        android:background="@drawable/button_style"
+        tools:layout_editor_absoluteX="53dp"
+        tools:layout_editor_absoluteY="669dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="В корзину"
+        android:textColor="@color/white"
+        android:background="@drawable/button_style"
+        tools:layout_editor_absoluteX="245dp"
+        tools:layout_editor_absoluteY="672dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

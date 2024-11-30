@@ -22,6 +22,12 @@ import java.util.List;
 
 public class Main extends AppCompatActivity {
     public String[] namesP = {"Сгущенка","Молоко","Кефир","Сыр","Йогурт клубничный","Йогурт банановый"};
+    public String[] descriptionP = {"",
+            "",
+            "Самый распространенный кисломолочный продукт, получаемый из коровьего молока путем воздействия на него целого комплекса бактерий. Всего их насчитывается около двух десятков, но больше всего в этом комплексе, называемом «кефирным грибком», содержится дрожжевых, уксуснокислых бактерий и молочнокислых палочек.",
+            "",
+            "",
+            ""};
     public String[] pricesP = {"189 ₽","199 ₽","129 ₽","389 ₽","79 ₽","79 ₽"};
     public int[] imagesP = {R.drawable.image1,R.drawable.image2,R.drawable.image3,R.drawable.image4,R.drawable.image5,R.drawable.image6};
     private SearchView searchView;
