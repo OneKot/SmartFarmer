@@ -18,7 +18,6 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.Firebase;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -55,7 +54,7 @@ public class MainActivity2 extends AppCompatActivity {
                             @Override
                             public void onSuccess(AuthResult authResult) {
                                 Toast.makeText(MainActivity2.this, "Успешный вход", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
+                                Intent intent = new Intent(MainActivity2.this, Main.class);
                                 startActivity(intent);
                                 finish();
                             }

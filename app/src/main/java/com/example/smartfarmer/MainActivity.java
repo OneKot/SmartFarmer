@@ -54,26 +54,34 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String user = editText1.getText().toString().trim();
                 String pass = editText2.getText().toString().trim();
-
+                String sPass = editText3.getText().toString().trim();
                 if(user.isEmpty()){
-                        editText1.setError("Поле e-mail не может быть пустым");
+                    editText1.setError("Поле e-mail не может быть пустым");
                 }
                 if(pass.isEmpty()){
                     editText2.setError("Поле Пароль не может быть пустым");
                 }
+                if(sPass.isEmpty()){
+                    editText2.setError("Поле Подтверждение пароля не может быть пустым");
+                }
                 else {
-                    auth.createUserWithEmailAndPassword(user,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()){
-                                Toast.makeText(MainActivity.this, "Успешная регистрация", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(MainActivity.this, MainActivity3.class);
-                                startActivity(intent);
-                            }else {
-                                Toast.makeText(MainActivity.this, "Не удалось зарегистрироваться"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    if (pass.equals(sPass)) {
+                        auth.createUserWithEmailAndPassword(user, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(MainActivity.this, "Успешная регистрация", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(MainActivity.this, Main.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    startActivity(intent);
+                                } else {
+                                    Toast.makeText(MainActivity.this, "Не удалось зарегистрироваться " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                }
                             }
-                        }
-                    });
+                        });
+                    }else{
+                        Toast.makeText(MainActivity.this, "Пароли не совпадают", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
