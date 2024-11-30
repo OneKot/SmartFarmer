@@ -1,5 +1,5 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:radius="4dp" /> <!-- Закругленные углы -->
+    <corners android:radius="8dp" /> <!-- Закругленные углы -->
     <solid
         android:color="@color/secondBackgroundB" />
 </shape>
