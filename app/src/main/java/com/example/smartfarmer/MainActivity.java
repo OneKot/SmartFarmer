@@ -4,29 +4,36 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
+import android.widget.AdapterView;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private FirebaseAuth auth;
-
-    private TextView textView1,textView2;
-    private EditText editText1,editText2,editText3;
-    private Button button1,button2;
+    public String[] namesP = {"Сгущенка","Молоко","Кефир","Сыр","Йогурт клубничный","Йогурт банановый"};
+    public String[] descriptionP = {"",
+            "",
+            "Самый распространенный кисломолочный продукт, получаемый из коровьего молока путем воздействия на него целого комплекса бактерий. Всего их насчитывается около двух десятков, но больше всего в этом комплексе, называемом «кефирным грибком», содержится дрожжевых, уксуснокислых бактерий и молочнокислых палочек.",
+            "",
+            "",
+            ""};
+    public String[] pricesP = {"189 ₽","199 ₽","129 ₽","389 ₽","79 ₽","79 ₽"};
+    public int[] imagesP = {R.drawable.image1,R.drawable.image2,R.drawable.image3,R.drawable.image4,R.drawable.image5,R.drawable.image6};
+    private SearchView searchView;
+    private ListView listView;
+    private ImageView imageView1,imageView2,imageView3,imageView4;
+    private TextView textView2;
+    List<Product> productList;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -39,61 +46,75 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
-        auth = FirebaseAuth.getInstance();
-        textView1 = findViewById(R.id.textView1);
+        searchView = findViewById(R.id.searchView);
+        listView = findViewById(R.id.listView);
+        imageView1 = findViewById(R.id.imageView1);
+        imageView2 = findViewById(R.id.imageView2);
+        imageView3 = findViewById(R.id.imageView3);
+        imageView4 = findViewById(R.id.imageView4);
         textView2 = findViewById(R.id.textView2);
-        editText1 = findViewById(R.id.editTextText);
-        editText2 = findViewById(R.id.editTextTextPassword1);
-        editText3 = findViewById(R.id.editTextTextPassword2);
-        button1 = findViewById(R.id.button1);
-        button2 = findViewById(R.id.button2);
+        productList = new ArrayList<>();
 
-        button1.setOnClickListener(new View.OnClickListener() {
+
+        productList.add(new Product(imagesP[0], namesP[0], pricesP[0],"Поставщик"));
+        productList.add(new Product(imagesP[1], namesP[1], pricesP[1],"Поставщик"));
+        productList.add(new Product(imagesP[2], namesP[2], pricesP[2],"Поставщик"));
+        productList.add(new Product(imagesP[3], namesP[3], pricesP[3],"Поставщик"));
+        productList.add(new Product(imagesP[4], namesP[4], pricesP[4],"Поставщик"));
+        productList.add(new Product(imagesP[5], namesP[5], pricesP[5],"Поставщик"));
+
+        //creating the adapter
+        MyListAdapter adapter = new MyListAdapter(this, R.layout.list_item, productList);
+
+        //attaching adapter to the listview
+        listView.setAdapter(adapter);
+        imageView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String user = editText1.getText().toString().trim();
-                String pass = editText2.getText().toString().trim();
-                String sPass = editText3.getText().toString().trim();
-                if(user.isEmpty()){
-                    editText1.setError("Поле e-mail не может быть пустым");
-                }
-                if(pass.isEmpty()){
-                    editText2.setError("Поле Пароль не может быть пустым");
-                }
-                if(sPass.isEmpty()){
-                    editText2.setError("Поле Подтверждение пароля не может быть пустым");
-                }
-                else {
-                    if (pass.equals(sPass)) {
-                        auth.createUserWithEmailAndPassword(user, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(MainActivity.this, "Успешная регистрация", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(MainActivity.this, Main.class);
-                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                                    startActivity(intent);
-                                } else {
-                                    Toast.makeText(MainActivity.this, "Не удалось зарегистрироваться " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
-                    }else{
-                        Toast.makeText(MainActivity.this, "Пароли не совпадают", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }
-        });
-
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                Intent intent = new Intent(MainActivity.this,MilkPage.class);
                 startActivity(intent);
             }
         });
+        imageView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,MeatPage.class);
+                startActivity(intent);
+            }
+        });
+        imageView3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,TechPage.class);
+                startActivity(intent);
+            }
+        });
+        imageView4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ServicesPage.class);
+                startActivity(intent);
+            }
+        });
+        textView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SignIn.class);
+                startActivity(intent);
+            }
+        });
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String selectedItem = parent.getItemAtPosition(position).toString();
+                int selectedPosition = position;
 
+                Intent intent = new Intent(MainActivity.this, ProductProfile.class);
 
+                intent.putExtra("selected_item",selectedItem);
+                intent.putExtra("selectedPosition",selectedPosition);
+                startActivity(intent);
+            }
+        });
     }
 }

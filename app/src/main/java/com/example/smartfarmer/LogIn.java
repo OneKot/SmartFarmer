@@ -21,7 +21,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class MainActivity2 extends AppCompatActivity {
+public class LogIn extends AppCompatActivity {
     private FirebaseAuth auth;
     private EditText editText1,editText2;
     private Button button1,button2;
@@ -30,7 +30,7 @@ public class MainActivity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_log_in);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -53,15 +53,15 @@ public class MainActivity2 extends AppCompatActivity {
                         auth.signInWithEmailAndPassword(email,pass).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                             @Override
                             public void onSuccess(AuthResult authResult) {
-                                Toast.makeText(MainActivity2.this, "Успешный вход", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(MainActivity2.this, Main.class);
+                                Toast.makeText(LogIn.this, "Успешный вход", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(LogIn.this, MainActivity.class);
                                 startActivity(intent);
                                 finish();
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(MainActivity2.this, "Не удалось войти", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LogIn.this, "Не удалось войти", Toast.LENGTH_SHORT).show();
                             }
                         });
                     }else{
@@ -78,7 +78,7 @@ public class MainActivity2 extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity2.this, MainActivity.class);
+                Intent intent = new Intent(LogIn.this, SignIn.class);
                 startActivity(intent);
             }
         });
