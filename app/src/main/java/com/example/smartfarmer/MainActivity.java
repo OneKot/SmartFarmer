@@ -63,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
         productList.add(new Product(imagesP[4], namesP[4], pricesP[4],"Поставщик"));
         productList.add(new Product(imagesP[5], namesP[5], pricesP[5],"Поставщик"));
 
-        //creating the adapter
         MyListAdapter adapter = new MyListAdapter(this, R.layout.list_item, productList);
 
         //attaching adapter to the listview
